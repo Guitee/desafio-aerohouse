@@ -3,7 +3,7 @@
   <q-card class="my-card" style="padding:30px">
     <q-form
       class="row q-col-gutter-sm"
-      @submit="save"
+      @submit="onSubmit"
     >
      <q-input
         rounded
@@ -35,6 +35,7 @@ export default ({
   data () {
     return {
       post: {
+        userId: Number(this.$route.params.userId),
         id: this.$route.params.id,
         title: null,
         body: null
@@ -42,12 +43,25 @@ export default ({
     }
   },
   methods: {
-    ...mapActions(['savePosts']),
-    onSubmit () {
-      this.savePosts(this.post)
+    ...mapActions(['createPost', 'updatePost']),
+    onSubmit (event) {
+      if (Number(this.post.id) === 0) {
+        this.createPost(this.post)
+      } else {
+        this.updatePost(this.post)
+      }
+      this.$router.back()
+    },
+    loadPost (id) {
+      this.post = this.$store.state.posts.filter(el => {
+        return Number(el.id) === Number(id)
+      })[0]
     }
   },
   mounted () {
+    if (Number(this.post.id) !== 0) {
+      this.loadPost(this.post.id)
+    }
   }
 })
 </script>

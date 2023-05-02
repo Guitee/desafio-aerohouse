@@ -52,13 +52,13 @@ const linksList = [
   {
     title: 'Posts',
     caption: '',
-    icon: '',
+    icon: 'article',
     route: { name: 'home' }
   },
   {
     title: 'Users',
     caption: '',
-    icon: '',
+    icon: 'people',
     route: { name: 'users' }
   }
 ]

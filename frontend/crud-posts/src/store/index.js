@@ -5,7 +5,8 @@ import createPersistedState from 'vuex-persistedstate'
 const store = createStore({
   state () {
     return {
-      posts: []
+      posts: [],
+      selectedUser: null
     }
   },
   getters: {
@@ -14,21 +15,21 @@ const store = createStore({
     }
   },
   actions: {
-    async fethPosts ({ commit }, userId) {
-      const response = await api.get(`posts?userId=${userId}`)
+    async fethPosts ({ commit }) {
+      const response = await api.get('posts')
       commit('setPosts', response.data)
     },
     async deletePost ({ commit }, id) {
       await api.delete(`posts/${id}`)
       commit('removePost', id)
     },
-    async createPost ({ commit }, post) {
-      await api.post('posts')
+    createPost ({ commit }, post) {
+      api.post('posts', post)
       commit('savePost', post)
     },
-    async updatePost ({ commit }, id) {
-      await api.post(`posts/${id}`)
-      commit('editPost', id)
+    async updatePost ({ commit }, post) {
+      await api.put(`posts/${post.id}`, post)
+      commit('editPost', post)
     }
   },
   mutations: {
@@ -41,7 +42,19 @@ const store = createStore({
       })
     },
     savePost (state, post) {
-      state.posts.push(post)
+      const sortedArray = state.posts.sort(function (a, b) {
+        return a.id - b.id
+      })
+      const lastId = sortedArray[sortedArray.length - 1].id + 1
+      post.id = lastId
+      state.posts.unshift(post)
+    },
+    editPost (state, postUpdate) {
+      const index = state.posts.findIndex(post => Number(post.id) === Number(postUpdate.id))
+
+      if (index !== -1) {
+        state.posts.slice(index, 1, postUpdate)
+      }
     }
   },
   plugins: [createPersistedState()]

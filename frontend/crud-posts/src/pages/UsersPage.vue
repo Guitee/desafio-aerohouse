@@ -95,7 +95,6 @@ export default ({
       this.phone = user.phone
       this.address.street = user.address.street
       this.address.city = user.address.city
-      console.log(user)
     }
   },
   mounted () {

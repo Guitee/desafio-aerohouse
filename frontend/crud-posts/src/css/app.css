@@ -2,6 +2,7 @@
 .custom-select {
     position: relative;
     font-family: Roboto;
+    background-color: #009BDE; 
   }
   
   .custom-select select {
@@ -11,7 +12,6 @@
   .select-selected {
     box-shadow : 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 25px;
-    background-color: #009BDE;
   }
   
   .select-selected:after {
@@ -54,4 +54,13 @@
   
   .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .load-button {
+    margin-left: 30px;
+    box-shadow : 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    background-color: #009BDE;
+    font-family: Roboto;
+    color: #ffffff;
   }
