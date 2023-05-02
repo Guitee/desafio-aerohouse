@@ -1,0 +1,3 @@
+O encapsulamento utilizado na classe criada do exercício 3 foi definir as propriedades da classe como privada com o obetivo delas serem
+acessadas apenas pelos métodos públicos da própria classe. Além disso utilizei uma exceção no setter da propriedade numPassageiros 
+com o objetivo de retornar um erro quando a quantidade de passageiros ultrapassa o limite do avião.

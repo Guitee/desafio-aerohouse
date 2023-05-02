@@ -1,0 +1,9 @@
+{   "autoload": {
+        "classmap": [
+            "ex5/"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9"
+    }
+}
