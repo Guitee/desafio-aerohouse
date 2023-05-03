@@ -10,6 +10,6 @@ DESAFIO FRONT
 
 Existe um READEME dentro da pasta frontend onde explica como instalar o projeto.
 
-O botão "CARREGAR" que existe na tela de inicio de posts foi criado para carregar os dados da api no local state da aplicação, funcionando como mock.
+O botão "CARREGAR" que existe na tela de inicio de posts foi criado para carregar os dados da api no local storage da aplicação mockando as informações da api.
 Assim foi possível trazer os dados da api e usar eles de forma local, sem perder informação. Quando quiser carregar os dados da api novamente, basta
 clicar no botão.
